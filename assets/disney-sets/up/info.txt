@@ -1,0 +1,6 @@
+Nombre: Casa de "Up"
+Precio: 54,99
+Edad: 9+
+Piezas: 598
+Rating: 4.3
+url: https://www.lego.com/es-es/product/up-house-43217

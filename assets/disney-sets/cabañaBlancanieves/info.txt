@@ -1,0 +1,6 @@
+Nombre: Cabaña de Blancanieves y los Siete Enanitos
+Precio: 219,99
+Edad: 18+
+Piezas: 2228
+Rating: 5.0
+url: https://www.lego.com/es-es/product/snow-white-and-the-seven-dwarfs-cottage-43242

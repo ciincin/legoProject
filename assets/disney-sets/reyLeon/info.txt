@@ -1,0 +1,5 @@
+Nombre: El Rey León: Simba Cachorro
+Precio: 19,99
+Edad: 6+
+Piezas: 222
+url: https://www.lego.com/es-es/product/simba-the-lion-king-cub-43243

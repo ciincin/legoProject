@@ -1,0 +1,5 @@
+Nombre: Palacio de Hielo de Elsa
+Precio: 99,99
+Edad: 6+
+Piezas: 630
+url: https://www.lego.com/es-es/product/elsa-s-ice-palace-43244

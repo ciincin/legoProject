@@ -1,0 +1,6 @@
+Nombre: Stitch
+Precio: 64,99
+Edad: 9+
+Piezas: 730
+Rating: 4.7
+url: https://www.lego.com/es-es/product/stitch-43249

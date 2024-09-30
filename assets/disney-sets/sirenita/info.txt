@@ -1,0 +1,6 @@
+Nombre: Mini Castillo de Disney Ariel
+Precio: 39,99
+Edad: 12+
+Piezas: 557
+Rating: 4.4
+url: https://www.lego.com/es-es/product/mini-disney-ariel-s-castle-40708
