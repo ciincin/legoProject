@@ -89,9 +89,9 @@ const fullUrl = window.location.href;
 
 // Event listener que pinta en pantalla las cards (o el shoppingCart) dependiendo del href del html
 window.addEventListener("DOMContentLoaded", () => {
-  if (fullUrl === "http://127.0.0.1:5500/disney.html") {
+  if (fullUrl === "/disney") {
     displayOnRefresh();
-  } else if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+  } else if (fullUrl === "/index-cart") {
     //Cart website
     findProduct(getProductToLocalStorage()).forEach((item) => {
       cartContainer.innerHTML += modifiedTemplate(
@@ -194,7 +194,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const exitButton = document.getElementById("button-exit");
 
   function handleToggle() {
-    document.body.classList.add("active");
+    document.body.productList.add("active");
 
     if (detailsElement.hasAttribute("open")) {
       subMenu.style.width = "74.063rem"; // Ancho cuando está abierto
@@ -204,7 +204,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function handleSubMenu() {
-    document.body.classList.add("active");
+    document.body.productList.add("active");
   }
 
   function handleExitClick() {
@@ -239,7 +239,7 @@ function bagIconCounter() {
 
   bagIcon.textContent = `(${totalAmount})`;
 
-  if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+  if (fullUrl === "/index-cart") {
     const myCart = document.getElementById("cart-product-amount");
     myCart.innerHTML = `Mi bolsa (${totalAmount})`;
 
@@ -532,12 +532,12 @@ function emptyHeartCheck() {
 
         const wishList = document.getElementById(`add-wish-list-${item.id}`);
         if (element.emptyHeart === false) {
-          heart.classList.replace("bi-heart", "bi-heart-fill");
-          if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+          heart.productList.replace("bi-heart", "bi-heart-fill");
+          if (fullUrl === "/index-cart") {
             let heartCarrousel = document.getElementById(
               `cart-carrousel-icon-heart-${item.id}`
             );
-            heartCarrousel.classList.replace("bi-heart", "bi-heart-fill");
+            heartCarrousel.productList.replace("bi-heart", "bi-heart-fill");
             wishList.textContent = `Quitar de la lista de deseos`;
           }
         }
@@ -563,8 +563,8 @@ function addToTheWishList(productID) {
       if (obj.id == productID) {
         if (obj.emptyHeart) {
           // fill the heart
-          heart.classList.replace("bi-heart", "bi-heart-fill");
-          if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+          heart.productList.replace("bi-heart", "bi-heart-fill");
+          if (fullUrl === "/index-cart") {
             wishList.textContent = `Quitar de la lista de deseos`;
             location.href = location.href;
           }
@@ -574,8 +574,8 @@ function addToTheWishList(productID) {
           return (obj.emptyHeart = false);
         } else {
           // empty the heart
-          heart.classList.replace("bi-heart-fill", "bi-heart");
-          if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+          heart.productList.replace("bi-heart-fill", "bi-heart");
+          if (fullUrl === "/index-cart") {
             wishList.textContent = `Añadir a la lista de deseos`;
             location.href = location.href;
           }
@@ -591,7 +591,7 @@ function addToTheWishList(productID) {
       if (obj.id == productID) {
         if (obj.emptyHeart) {
           // fill the heart
-          heartCarrousel.classList.replace("bi-heart", "bi-heart-fill");
+          heartCarrousel.productList.replace("bi-heart", "bi-heart-fill");
           obj.emptyHeart = false;
           if (storedProduct) {
             storedProduct.emptyHeart = false;
@@ -599,7 +599,7 @@ function addToTheWishList(productID) {
           }
         } else {
           // empty the heart
-          heartCarrousel.classList.replace("bi-heart-fill", "bi-heart");
+          heartCarrousel.productList.replace("bi-heart-fill", "bi-heart");
           obj.emptyHeart = true;
           if (storedProduct) {
             storedProduct.emptyHeart = true;
@@ -641,13 +641,13 @@ function btnCode() {
   let promoBoxIsClosed = true;
 
   btnPromo.addEventListener("click", () => {
-    promoBox.classList.toggle("cart-display-none");
+    promoBox.productList.toggle("cart-display-none");
 
     if (promoBoxIsClosed) {
-      iconArrow.classList.replace("rotate-down", "rotate-up");
+      iconArrow.productList.replace("rotate-down", "rotate-up");
       promoBoxIsClosed = false;
     } else {
-      iconArrow.classList.replace("rotate-up", "rotate-down");
+      iconArrow.productList.replace("rotate-up", "rotate-down");
       promoBoxIsClosed = true;
     }
   });
@@ -675,7 +675,7 @@ function addProductToLocalStorage(productID) {
       emptyHeart: productList[productID - 1].emptyHeart,
     })
   );
-  if (fullUrl === "http://127.0.0.1:5500/index-cart.html") {
+  if (fullUrl === "/index-cart") {
     location.href = location.href;
   }
 }
@@ -708,9 +708,9 @@ function shoppingCartEmpty() {
   const cartEmptyContainer = document.getElementById("cart-empty-cart");
 
   if (getProductToLocalStorage().length == 0) {
-    cartFullContainer.classList.toggle("cart-display-none");
+    cartFullContainer.productList.toggle("cart-display-none");
   } else {
-    cartEmptyContainer.classList.toggle("cart-display-none");
+    cartEmptyContainer.productList.toggle("cart-display-none");
   }
 }
 
@@ -827,22 +827,22 @@ function editButtonQuery(productID) {
     `cart-container-article-${productID}`
   );
   const textBtn = document.getElementById(`cart-btn-text-${productID}`);
-  const isDisplayed = displayArticle.classList.contains("cart-display-flex");
+  const isDisplayed = displayArticle.productList.contains("cart-display-flex");
 
   if (isDisplayed) {
-    displayArticle.classList.remove("cart-display-flex");
-    containerArticle.classList.remove("cart-display-flex-wrap");
+    displayArticle.productList.remove("cart-display-flex");
+    containerArticle.productList.remove("cart-display-flex-wrap");
     textBtn.innerHTML = "(Editar)";
   } else {
-    displayArticle.classList.add("cart-display-flex");
+    displayArticle.productList.add("cart-display-flex");
     //  console.log(displayArticle.className=== "cart-add-more-content cart-display-flex")
     if (
       displayArticle.className === "cart-add-more-content cart-display-flex" &&
       window.innerWidth < 900
     ) {
       // displayArticle.className ="cart-add-more-content cart-display-flex";
-      containerArticle.classList.add("cart-display-flex-wrap");
-      displayArticle.classList.add("cart-display-flex");
+      containerArticle.productList.add("cart-display-flex-wrap");
+      displayArticle.productList.add("cart-display-flex");
       textBtn.innerHTML = "Listo";
     }
   }
