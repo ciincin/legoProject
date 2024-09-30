@@ -194,7 +194,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const exitButton = document.getElementById("button-exit");
 
   function handleToggle() {
-    document.body.productList.add("active");
+    document.body.classList.add("active");
 
     if (detailsElement.hasAttribute("open")) {
       subMenu.style.width = "74.063rem"; // Ancho cuando está abierto
@@ -204,7 +204,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function handleSubMenu() {
-    document.body.productList.add("active");
+    document.body.classList.add("active");
   }
 
   function handleExitClick() {
@@ -532,12 +532,12 @@ function emptyHeartCheck() {
 
         const wishList = document.getElementById(`add-wish-list-${item.id}`);
         if (element.emptyHeart === false) {
-          heart.productList.replace("bi-heart", "bi-heart-fill");
+          heart.classList.replace("bi-heart", "bi-heart-fill");
           if (fullUrl === "https://lego-cinthya.netlify.app/index-cart") {
             let heartCarrousel = document.getElementById(
               `cart-carrousel-icon-heart-${item.id}`
             );
-            heartCarrousel.productList.replace("bi-heart", "bi-heart-fill");
+            heartCarrousel.classList.replace("bi-heart", "bi-heart-fill");
             wishList.textContent = `Quitar de la lista de deseos`;
           }
         }
@@ -563,7 +563,7 @@ function addToTheWishList(productID) {
       if (obj.id == productID) {
         if (obj.emptyHeart) {
           // fill the heart
-          heart.productList.replace("bi-heart", "bi-heart-fill");
+          heart.classList.replace("bi-heart", "bi-heart-fill");
           if (fullUrl === "https://lego-cinthya.netlify.app/index-cart") {
             wishList.textContent = `Quitar de la lista de deseos`;
             location.href = location.href;
@@ -574,7 +574,7 @@ function addToTheWishList(productID) {
           return (obj.emptyHeart = false);
         } else {
           // empty the heart
-          heart.productList.replace("bi-heart-fill", "bi-heart");
+          heart.classList.replace("bi-heart-fill", "bi-heart");
           if (fullUrl === "https://lego-cinthya.netlify.app/index-cart") {
             wishList.textContent = `Añadir a la lista de deseos`;
             location.href = location.href;
@@ -591,7 +591,7 @@ function addToTheWishList(productID) {
       if (obj.id == productID) {
         if (obj.emptyHeart) {
           // fill the heart
-          heartCarrousel.productList.replace("bi-heart", "bi-heart-fill");
+          heartCarrousel.classList.replace("bi-heart", "bi-heart-fill");
           obj.emptyHeart = false;
           if (storedProduct) {
             storedProduct.emptyHeart = false;
@@ -599,7 +599,7 @@ function addToTheWishList(productID) {
           }
         } else {
           // empty the heart
-          heartCarrousel.productList.replace("bi-heart-fill", "bi-heart");
+          heartCarrousel.classList.replace("bi-heart-fill", "bi-heart");
           obj.emptyHeart = true;
           if (storedProduct) {
             storedProduct.emptyHeart = true;
@@ -641,13 +641,13 @@ function btnCode() {
   let promoBoxIsClosed = true;
 
   btnPromo.addEventListener("click", () => {
-    promoBox.productList.toggle("cart-display-none");
+    promoBox.classList.toggle("cart-display-none");
 
     if (promoBoxIsClosed) {
-      iconArrow.productList.replace("rotate-down", "rotate-up");
+      iconArrow.classList.replace("rotate-down", "rotate-up");
       promoBoxIsClosed = false;
     } else {
-      iconArrow.productList.replace("rotate-up", "rotate-down");
+      iconArrow.classList.replace("rotate-up", "rotate-down");
       promoBoxIsClosed = true;
     }
   });
@@ -708,9 +708,9 @@ function shoppingCartEmpty() {
   const cartEmptyContainer = document.getElementById("cart-empty-cart");
 
   if (getProductToLocalStorage().length == 0) {
-    cartFullContainer.productList.toggle("cart-display-none");
+    cartFullContainer.classList.toggle("cart-display-none");
   } else {
-    cartEmptyContainer.productList.toggle("cart-display-none");
+    cartEmptyContainer.classList.toggle("cart-display-none");
   }
 }
 
@@ -827,22 +827,22 @@ function editButtonQuery(productID) {
     `cart-container-article-${productID}`
   );
   const textBtn = document.getElementById(`cart-btn-text-${productID}`);
-  const isDisplayed = displayArticle.productList.contains("cart-display-flex");
+  const isDisplayed = displayArticle.classList.contains("cart-display-flex");
 
   if (isDisplayed) {
-    displayArticle.productList.remove("cart-display-flex");
-    containerArticle.productList.remove("cart-display-flex-wrap");
+    displayArticle.classList.remove("cart-display-flex");
+    containerArticle.classList.remove("cart-display-flex-wrap");
     textBtn.innerHTML = "(Editar)";
   } else {
-    displayArticle.productList.add("cart-display-flex");
+    displayArticle.classList.add("cart-display-flex");
     //  console.log(displayArticle.className=== "cart-add-more-content cart-display-flex")
     if (
       displayArticle.className === "cart-add-more-content cart-display-flex" &&
       window.innerWidth < 900
     ) {
       // displayArticle.className ="cart-add-more-content cart-display-flex";
-      containerArticle.productList.add("cart-display-flex-wrap");
-      displayArticle.productList.add("cart-display-flex");
+      containerArticle.classList.add("cart-display-flex-wrap");
+      displayArticle.classList.add("cart-display-flex");
       textBtn.innerHTML = "Listo";
     }
   }
