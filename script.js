@@ -89,9 +89,9 @@ const fullUrl = window.location.href;
 
 // Event listener que pinta en pantalla las cards (o el shoppingCart) dependiendo del href del html
 window.addEventListener("DOMContentLoaded", () => {
-  if (fullUrl === "/disney") {
+  if (fullUrl === "https://lego-cinthya.netlify.app/disney") {
     displayOnRefresh();
-  } else if (fullUrl === "/index-cart") {
+  } else if (fullUrl === "https://lego-cinthya.netlify.app/index-cart") {
     //Cart website
     findProduct(getProductToLocalStorage()).forEach((item) => {
       cartContainer.innerHTML += modifiedTemplate(
@@ -239,7 +239,7 @@ function bagIconCounter() {
 
   bagIcon.textContent = `(${totalAmount})`;
 
-  if (fullUrl === "/index-cart") {
+  if (fullUrl === "https://lego-cinthya.netlify.app/index-cart") {
     const myCart = document.getElementById("cart-product-amount");
     myCart.innerHTML = `Mi bolsa (${totalAmount})`;
 
@@ -533,7 +533,7 @@ function emptyHeartCheck() {
         const wishList = document.getElementById(`add-wish-list-${item.id}`);
         if (element.emptyHeart === false) {
           heart.productList.replace("bi-heart", "bi-heart-fill");
-          if (fullUrl === "/index-cart") {
+          if (fullUrl === "https://lego-cinthya.netlify.app/index-cart") {
             let heartCarrousel = document.getElementById(
               `cart-carrousel-icon-heart-${item.id}`
             );
@@ -564,7 +564,7 @@ function addToTheWishList(productID) {
         if (obj.emptyHeart) {
           // fill the heart
           heart.productList.replace("bi-heart", "bi-heart-fill");
-          if (fullUrl === "/index-cart") {
+          if (fullUrl === "https://lego-cinthya.netlify.app/index-cart") {
             wishList.textContent = `Quitar de la lista de deseos`;
             location.href = location.href;
           }
@@ -575,7 +575,7 @@ function addToTheWishList(productID) {
         } else {
           // empty the heart
           heart.productList.replace("bi-heart-fill", "bi-heart");
-          if (fullUrl === "/index-cart") {
+          if (fullUrl === "https://lego-cinthya.netlify.app/index-cart") {
             wishList.textContent = `Añadir a la lista de deseos`;
             location.href = location.href;
           }
@@ -675,7 +675,7 @@ function addProductToLocalStorage(productID) {
       emptyHeart: productList[productID - 1].emptyHeart,
     })
   );
-  if (fullUrl === "/index-cart") {
+  if (fullUrl === "https://lego-cinthya.netlify.app/index-cart") {
     location.href = location.href;
   }
 }
